@@ -10,7 +10,7 @@
 
 </head>
 <body>
-  <%= JSON.stringify(movieName) %>
+  <!-- <%= JSON.stringify(userData) %> -->
   <div class="container">
   <h3>Search Result</h3>
   <h5><a href="/users">Back</a></h5>
@@ -29,12 +29,12 @@
   <tbody>
     <% movieName.forEach(movie => { %>
     <tr>
-      <td><%= movie.id %></td>
+
       <td><%= movie.movie_name%></td>
       <td><%= movie.release_year%></td>
       <td><%= movie.synopsis%></td>
       <td><%= movie.company%></td>
-      <td><a href="" onclick="rate this movie, will help us to collect the most popular movie');">Rate</a></td>
+      <td><a href="/users/search/<%=userData[0].id%>/<%= movie.id %>" onclick="rate this movie, will help us to collect the most popular movie');">Rate</a></td>
       <td><a href="" onclick="enjoy the trailer, before you watch on Theater">Watch Trailer</a></td>
     </tr>
     <% })%>

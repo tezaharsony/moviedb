@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var db = require('../models')
 
+
+
 router.get('/', function(req, res) {
   db.User.findAll()
   .then(data_user =>{
@@ -72,12 +74,19 @@ router.post('/search', (req, res)=>{
       }
     })
     .then(data2=>{
-        console.log("====>",data2);
-        res.render('result-search', {userData:data,movieName:data2})
+      res.render('result-search', {userData:data,movieName:data2})
     })
   })
 })
 
-
+router.get('/search/:idu/:idm',(req, res)=>{
+  db.User.findAll({where:{id:`${req.params.idu}`}})
+  .then((data)=>{
+    db.Movie.findAll({where:{id:`${req.params.idm}`}})
+    .then((data2)=>{
+      res.render('rating', {users:data, movies:data2})
+    })
+  })
+})
 
 module.exports = router;
