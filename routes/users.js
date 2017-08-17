@@ -7,7 +7,27 @@ router.get('/', function(req, res) {
   .then(data_user =>{
     db.Movie.findAll()
     .then(data_movie =>{
-        res.render('listmovie', {users: data_user, movies : data_movie});
+      db.MovieUser.findAll()
+      .then(data_rate =>{
+
+        for(i=0; i<data_movie.length; i++)
+        {
+          var avg = 0;
+          var count = 0
+          data_movie[i].rating = 0;
+          for(j=0; j<data_rate.length; j++)
+          {
+            if(data_movie[i].id == data_rate[j].MovieId)
+            {
+              count++
+              data_movie[i].rating += data_rate[j].Rating
+            }
+          }
+          data_movie[i].rating = Math.floor(data_movie[i].rating/count)
+        }
+        console.log("====>" + data_movie[0].rating +" "+data_movie[0].movie_name);
+        res.render('listmovie', {users: data_user, movies : data_movie, rating:data_rate});
+      })
     })
   })
 });
@@ -28,7 +48,7 @@ router.get('/rating/:idU/:idM', function(req,res) {
 })
 
 router.post('/rating/:idU/:idM', function(req,res) {
-  db.MovieUser.update({
+  db.MovieUser.create({
     Rating: `${req.body.rating}`,
     UserId: `${req.params.idU}`,
     MovieId: `${req.params.idM}`
@@ -42,4 +62,29 @@ router.post('/rating/:idU/:idM', function(req,res) {
     res.redirect('/users')
   })
 })
+
+router.post('/search', (req, res)=>{
+  db.User.findAll()
+  .then(data=>{
+    db.Movie.findAll({
+      where:{
+        movie_name:{$like: `%${req.body.search}%`}
+      }
+    })
+    .then(data2=>{
+      db.MovieUser.findAll({
+        where:{
+          Rating:{$like: `%${req.body.search}%`}
+        }
+      })
+      .then(data3=>{
+        console.log("====>",data2);
+        res.render('result-search', {userData:data,movieName:data2, rating:data3})
+      })
+    })
+  })
+})
+
+
+
 module.exports = router;

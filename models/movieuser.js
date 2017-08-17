@@ -5,9 +5,11 @@ module.exports = function(sequelize, DataTypes) {
     UserId: DataTypes.INTEGER,
     Rating: DataTypes.INTEGER
   });
-  MovieUser.associate = models =>{
+
+  MovieUser.associate = models => {
     MovieUser.belongsTo(models.Movie)
     MovieUser.belongsTo(models.User)
   }
+
   return MovieUser;
 };

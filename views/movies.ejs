@@ -35,10 +35,24 @@
       <td><%= movie.release_year%></td>
       <td><%= movie.synopsis%></td>
       <td><%= movie.company%></td>
+      <td>
+        <% for(i=0; i<rating.length; i++){%>
+          <% for(j=1; j<rating.length; j++){%>
+            <%if(rating[i].MovieId == rating[j].MovieId){%>
+              <% a = rating[i].Rating + rating[j].Rating%>
+            <%}else{%>
+              <% b = rating[i].Rating%>
+            <%}%>
+          <%}%>
+      <%}%>
+      <%= b%>
+
+      </td>
       <td><a href="">Update</a> | <a href="" onclick="return confirm('Are you sure want to delete this movie?');">Delete</a></td>
     </tr>
     <% })%>
   </tbody>
+  <%= JSON.stringify(rating) %>
 </table>
 </div>
 
