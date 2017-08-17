@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Movie</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+  <body>
+
+    <div class="container">
+      <h3>Update Movie</h3>
+      <br>
+      <form action="/movies/editmovies/<%= movie.id%>" method="post">
+        <div class="form-group">
+          <label>Movie Name : </label>
+          <input class="form-control" type="text" name="movie_name" value="<%= movie.movie_name%>">
+        </div>
+        <div class="form-group">
+          <label>Release Year : </label>
+          <input class="form-control" type="text" name="release_year" value="<%= movie.release_year%>">
+        </div>
+        <div class="form-group">
+          <label>Company : </label>
+          <input class="form-control" type="text" name="company" value="<%= movie.company%>">
+        </div>
+        <div class="form-group">
+          <label>Producer : </label>
+          <input class="form-control" type="text" name="producer" value="<%= movie.producer%>">
+        </div>
+        <div class="form-group">
+          <label>Synopsis : </label>
+          <input class="form-control" type="text" name="synopsis" value="<%= movie.synopsis%>">
+        </div>
+          <br>
+        <button type="submit" name="" class="btn btn-default">Update Student</button>
+      </form>
+    </div>
+  </body>
+
+</html>
