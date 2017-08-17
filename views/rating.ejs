@@ -38,10 +38,8 @@
 
 <body>
   <div class="container">
-    <%users.forEach(users=>{%>
-    <h3>Welcome <%=users.username%></h3>
-    <%})%>
-    <!-- <%=JSON.stringify(movies)%> -->
+
+    <h3>Welcome </h3>
       <h5><a href="/subjects">Return to Subject List</a></h5>
       <br>
   </div>
@@ -65,8 +63,9 @@
           <%=movies[0].company%>
         </td>
         <td>
-          <form action="/users/rating/<%= users[0].id%>/<%= movies[0].id%>" method="post">
-            <!-- <input type="hidden" name="rating" value="3"> -->
+          <% users.forEach(users=>{ %>
+          <form action="/users/rating/<%= users.id%>/<%= movies[0].id%>" method="post"> <% }) %>
+            <!-- <input typ="hidden" name="rating" value="3"> -->
             <button type="submit" name="rating" value="5">&#9733;</button>
             <button type="submit" name="rating" value="4">&#9733;</button>
             <button type="submit" name="rating" value="3">&#9733;</button>
@@ -79,10 +78,6 @@
     </tbody>
   </table>
   </div>
-
-
-
-
 </body>
 
 </html>

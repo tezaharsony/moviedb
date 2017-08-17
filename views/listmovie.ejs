@@ -42,9 +42,9 @@
           Not Rate Tejouuuu
         <%}%>
     </td>
-      <%users.forEach(users=>{%>
-      <td><a href="/users/rating/<%= users.id%>/<%= movie.id%>">Rate this movie</a>
-      <%})%>
+
+      <td><a href="/users/rating/<%= users[0].id%>/<%= movie.id%>">Rate this movie</a>
+
     </tr>
     <% }) %>
   </tbody>

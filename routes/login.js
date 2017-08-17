@@ -10,8 +10,9 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/login', function(req,res){
+  db.User.findAll()
   if(req.session.user){
-    res.redirect('/users')
+    res.redirect('/users/')
   }else {
     res.render('login')
   }
