@@ -7,7 +7,10 @@ const db = require('../models')
 router.get('/', (req, res) => {
   db.Movie.findAll()
   .then(data_movie => {
-    res.render('movies', {movies : data_movie})
+    db.MovieUser.findAll()
+    .then(data2 =>{
+      res.render('movies', {movies : data_movie, rating:data2})
+    })
   })
 })
 

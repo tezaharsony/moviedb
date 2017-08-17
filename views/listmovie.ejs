@@ -33,7 +33,7 @@
   <div class="container">
   <h2>Welcome</h2>
   <h3>Movie List</h3>
-  <!-- <%=JSON.stringify(users)%> -->
+  <!-- <%=JSON.stringify(rating)%> -->
   <br>
   <form action="/users/search" method="POST">
     <input type="text" name="search" placeholder="Search Movie..."><br>
@@ -44,6 +44,7 @@
     <tr>
       <th>ID</th>
       <th>Movie Name</th>
+      <th>Rating</th>
       <th>Option</th>
     </tr>
   </thead>
@@ -52,10 +53,16 @@
     <tr>
       <td><%=movie.id%></td>
       <td><%=movie.movie_name%></td>
-
+      <td>
+        <%if(movie.rating){%>
+          <%=movie.rating%>
+        <%}else{%>
+          Not Rate Tejouuuu
+        <%}%>
+    </td>
       <td><a href="/users/rating/<%= users[0].id%>/<%= movie.id%>">Rate this movie</a>
     </tr>
-  <% }) %>
+    <% }) %>
   </tbody>
 </table>
 </div>
