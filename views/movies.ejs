@@ -1,41 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Student</title>
+  <title>Movies</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
 </head>
 <body>
 
   <div class="container">
-  <h3>Show Data Student</h3>
-  <h5><a href="/movies/add">Add New Student</a></h5>
+  <h3 class="animated fadeInUp">WELCOME</h3>
+
+  <h5><a href="/movies/addmovies" class="animated fadeInUp">Add New Movie</a></h5>
   <br>
 <table class="table table-hover">
-  <thead>
+  <thead class="animated fadeInUp">
     <tr>
       <th>ID</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Email</th>
-      <th>Jurusan</th>
-      <th>Action</th>
-      <th>Option</th>
+      <th>Movie Name</th>
+      <th>Release Year</th>
+      <th>Company</th>
+      <th>Producer</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody class="animated fadeInUp">
     <% movies.forEach(movie => { %>
     <tr>
       <td><%= movie.id %></td>
       <td><%= movie.movie_name%></td>
       <td><%= movie.release_year%></td>
-      <td><%= movie.synopsis%></td>
       <td><%= movie.company%></td>
-      <td><a href="">Update</a> | <a href="" onclick="return confirm('Are you sure want to delete this movie?');">Delete</a></td>
+      <td><%= movie.producer%></td>
+      <td><a href="movies/editmovies/<%= movie.id%>">Update</a> | <a href="movies/delete/<%= movie.id%>" onclick="return confirm('Are you sure want to delete this movie?');">Delete</a></td>
     </tr>
     <% })%>
   </tbody>

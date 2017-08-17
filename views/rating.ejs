@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 </head>
 <body>
   <div class="container">
@@ -28,8 +29,20 @@
       <td><%=movies[0].release_year%></td>
       <td><%=movies[0].company%></td>
       <td><form action="/users/rating/<%= users[0].id%>/<%= movies[0].id%>" method="post">
-        <input type="text" name="rating" value="" placeholder="input 0-100" class="form-control" required><br><br><button type="submit" name="button" class="btn btn-default"> Give rate </button>
-      </form></td>
+        <div class="stars">
+  <form action="/users/rating/<%= users[0].id%>/<%= movies[0].id%>" method="post">
+    <input class="star star-5" id="star-5" type="radio" name="star"/>
+    <label class="star star-5" for="star-5"></label>
+    <input class="star star-4" id="star-4" type="radio" name="star"/>
+    <label class="star star-4" for="star-4"></label>
+    <input class="star star-3" id="star-3" type="radio" name="star"/>
+    <label class="star star-3" for="star-3"></label>
+    <input class="star star-2" id="star-2" type="radio" name="star"/>
+    <label class="star star-2" for="star-2"></label>
+    <input class="star star-1" id="star-1" type="radio" name="star"/>
+    <label class="star star-1" for="star-1"></label>
+  </form>
+</div>
     </tr>
   </tbody>
 </table>
