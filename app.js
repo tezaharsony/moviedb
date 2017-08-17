@@ -7,7 +7,6 @@ var bodyParser = require('body-parser');
 var app = express();
 
 
-var index = require('./routes/index');
 var users = require('./routes/users');
 var login = require('./routes/login');
 var register = require('./routes/register');
@@ -26,11 +25,27 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+const session = require('express-session')
 
-app.use('/', index);
-app.use('/users', users);
-app.use('/login', login);
+app.use(session({
+  secret:'teza',
+  resave : false,
+  saveUninitialized : true
+  // cookie : { secure : true }
+}))
+
 app.use('/register', register);
+app.use('/', login);
+
+app.use((req, res, next) => {
+  if(req.session.user){
+    next();
+  }else{
+    res.render('login')
+  }
+})
+
+app.use('/users', users);
 app.use('/movies', movies)
 
 // catch 404 and forward to error handler

@@ -72,15 +72,8 @@ router.post('/search', (req, res)=>{
       }
     })
     .then(data2=>{
-      db.MovieUser.findAll({
-        where:{
-          Rating:{$like: `%${req.body.search}%`}
-        }
-      })
-      .then(data3=>{
         console.log("====>",data2);
-        res.render('result-search', {userData:data,movieName:data2, rating:data3})
-      })
+        res.render('result-search', {userData:data,movieName:data2})
     })
   })
 })
