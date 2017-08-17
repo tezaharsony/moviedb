@@ -1,44 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Movies</title>
+  <title>Search</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </head>
 <body>
-
+  <%= JSON.stringify(movieName) %>
   <div class="container">
-  <h3 class="animated fadeInUp">WELCOME</h3>
-
-  <h5><a href="/movies/addmovies" class="animated fadeInUp">Add New Movie</a></h5>
+  <h3>Search Result</h3>
+  <h5><a href="/users">Back</a></h5>
   <br>
 <table class="table table-hover">
-  <thead class="animated fadeInUp">
+  <thead>
     <tr>
-      <th>ID</th>
       <th>Movie Name</th>
-      <th>Release Year</th>
+      <th>Realease Year</th>
+      <th>Synopsis</th>
       <th>Company</th>
       <th>Producer</th>
+      <th colspan="2">Option</th>
     </tr>
   </thead>
-  <tbody class="animated fadeInUp">
-    <% movies.forEach(movie => { %>
+  <tbody>
+    <% movieName.forEach(movie => { %>
     <tr>
       <td><%= movie.id %></td>
       <td><%= movie.movie_name%></td>
       <td><%= movie.release_year%></td>
+      <td><%= movie.synopsis%></td>
       <td><%= movie.company%></td>
-      <td><%= movie.producer%></td>
-      <td><a href="movies/editmovies/<%= movie.id%>">Update</a> | <a href="movies/delete/<%= movie.id%>" onclick="return confirm('Are you sure want to delete this movie?');">Delete</a></td>
-      <td><a href="">Update</a> | <a href="" onclick="return confirm('Are you sure want to delete this movie?');">Delete</a></td>
+      <td><a href="" onclick="rate this movie, will help us to collect the most popular movie');">Rate</a></td>
+      <td><a href="" onclick="enjoy the trailer, before you watch on Theater">Watch Trailer</a></td>
     </tr>
     <% })%>
   </tbody>
-  <%= JSON.stringify(rating) %>
 </table>
 </div>
 
