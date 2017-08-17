@@ -7,26 +7,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <style>
-    input[type=text] {
-    width: 200px;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    background-color: white;
-    background-image: url('searchicon.png');
-    background-position: 10px 10px;
-    background-repeat: no-repeat;
-    padding: 12px 20px 12px 40px;
-    -webkit-transition: width 0.4s ease-in-out;
-    transition: width 0.4s ease-in-out;
-    }
 
-    input[type=text]:focus {
-      width: 100%;
-    }
-  </style>
 </head>
 <body>
 
@@ -35,7 +16,8 @@
   <h3>Movie List</h3>
   <!-- <%=JSON.stringify(rating)%> -->
   <br>
-  <form action="/users/search" method="POST">
+
+  <form action="/users/search/" method="POST">
     <input type="text" name="search" placeholder="Search Movie..."><br>
   </form>
   <br>
@@ -60,7 +42,9 @@
           Not Rate Tejouuuu
         <%}%>
     </td>
-      <td><a href="/users/rating/<%= users[0].id%>/<%= movie.id%>">Rate this movie</a>
+      <%users.forEach(users=>{%>
+      <td><a href="/users/rating/<%= users.id%>/<%= movie.id%>">Rate this movie</a>
+      <%})%>
     </tr>
     <% }) %>
   </tbody>
