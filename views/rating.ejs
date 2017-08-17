@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title>Input Score</title>
   <meta charset="utf-8">
@@ -7,35 +8,82 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <style>
+    form {
+      width: 100px;
+    }
+
+    button {
+      border: 0;
+      background: transparent;
+      font-size: 1.5em;
+      margin: 0;
+      padding: 0;
+      float: right;
+    }
+
+    button:hover,
+    button:hover+button,
+    button:hover+button+button,
+    button:hover+button+button+button,
+    button:hover+button+button+button+button {
+      color: #faa;
+    }
+  </style>
+
 </head>
+
 <body>
   <div class="container">
-  <h3>Welcome <%=users[0].username%></h3>
-  <%=JSON.stringify(movies)%>
-  <h5><a href="/subjects">Return to Subject List</a></h5>
-  <br>
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>Movie Name</th>
-      <th>Release</th>
-      <th>Company</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><%=movies[0].movie_name%></td>
-      <td><%=movies[0].release_year%></td>
-      <td><%=movies[0].company%></td>
-      <td><form action="/users/rating/<%= users[0].id%>/<%= movies[0].id%>" method="post">
-        <input type="text" name="rating" value="" placeholder="input 0-100" class="form-control" required><br><br><button type="submit" name="button" class="btn btn-default"> Give rate </button>
-      </form></td>
-    </tr>
-  </tbody>
-</table>
-</div>
+    <h3>Welcome <%=users[0].username%></h3>
+    <%=JSON.stringify(movies)%>
+      <h5><a href="/subjects">Return to Subject List</a></h5>
+      <br>
+  </div>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Movie Name</th>
+        <th>Release</th>
+        <th>Company</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <%=movies[0].movie_name%>
+        </td>
+        <td>
+          <%=movies[0].release_year%>
+        </td>
+        <td>
+          <%=movies[0].company%>
+        </td>
+        <td>
+          <form action="/users/rating/<%= users[0].id%>/<%= movies[0].id%>" method="post">
+            <!-- <input type="hidden" name="rating" value="3"> -->
+            <button type="submit" name="rating" value="5">&#9733;</button>
+            <button type="submit" name="rating" value="4">&#9733;</button>
+            <button type="submit" name="rating" value="3">&#9733;</button>
+            <button type="submit" name="rating" value="2">&#9733;</button>
+            <button type="submit" name="rating" value="1">&#9733;</button>
+
+
+            <!-- <td>
+              <form action="/users/rating/<%= users[0].id%>/<%= movies[0].id%>" method="post">
+                <input type="text" name="rating" value="" placeholder="input 0-100" class="form-control" required><br><br><button type="submit" name="button" class="btn btn-default"> Give rate </button>
+              </form>
+            </td> -->
+          </form>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
 
 
 
 </body>
+
 </html>
