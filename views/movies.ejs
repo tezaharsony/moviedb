@@ -34,11 +34,9 @@
       <td><%= movie.company%></td>
       <td><%= movie.producer%></td>
       <td><a href="movies/editmovies/<%= movie.id%>">Update</a> | <a href="movies/delete/<%= movie.id%>" onclick="return confirm('Are you sure want to delete this movie?');">Delete</a></td>
-      <td><a href="">Update</a> | <a href="" onclick="return confirm('Are you sure want to delete this movie?');">Delete</a></td>
     </tr>
     <% })%>
   </tbody>
-  <%= JSON.stringify(rating) %>
 </table>
 </div>
 

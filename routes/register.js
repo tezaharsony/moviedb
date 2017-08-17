@@ -1,9 +1,21 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router()
+const model = require('../models')
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('register');
-});
+router.get('/', (req, res) => {
+  res.render('register')
+})
+
+router.post('/', (req, res, next) => {
+  model.User.create({
+    'username' : req.body.username,
+    'password' : req.body.password,
+    'createdAt' : new Date(),
+    'updatedAt' : new Date()
+  })
+  .then((data_user) => {
+    res.render('login')
+  })
+})
 
 module.exports = router;
