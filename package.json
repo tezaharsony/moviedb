@@ -14,10 +14,10 @@
     "express": "~4.15.2",
     "express-session": "^1.15.5",
     "morgan": "~1.8.1",
-    "pg": "latest",
+    "pg": "^7.1.2",
     "random-bytes": "^1.0.0",
-    "sequelize": "latest",
-    "sequelize-cli": "latest",
+    "sequelize": "^4.5.0",
+    "sequelize-cli": "^2.8.0",
     "serve-favicon": "~2.4.2"
   }
 }
